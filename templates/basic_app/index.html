@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Tracker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "css/helper.css" %}">
+</head>
+
+<body class="jumbotron">
+
+  <div class="container text-center">
+    <h2><u>  Product Tracker WebApp  </u></h2>
+
+    <div class="jumbotron mx-auto text-center">
+
+      <h4>Enter product details :</h4><hr><br>
+      <form class="form-group" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      </form><br><hr>
+      <input type="submit" value="Submit" class="btn btn-primary"><br>
+
+      {% for m in messages %}
+        <h5>{{ m }}</h5>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  </body>
+</html>
