@@ -7,26 +7,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Price Tracker</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static "css/helper.css" %}">
 </head>
 
 <body class="jumbotron">
 
   <div class="container text-center">
-    <h2><u>  Product Tracker WebApp  </u></h2>
+    <h2><u>  Product Tracker WebApp</u></h2>
 
     <div class="jumbotron mx-auto text-center">
+      <form method="post" class="text-justify">
+        <h4>Enter product details :</h4><hr>
 
-      <h4>Enter product details :</h4><hr><br>
-      <form class="form-group" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-      </form><br><hr>
-      <input type="submit" value="Submit" class="btn btn-primary"><br>
+        <div class="form-group">
+          {% csrf_token %}
+          <label>Enter Product Name :</label><br>
+          {{ form.product_name }}<br><br>
 
-      {% for m in messages %}
-        <h5>{{ m }}</h5>
-      {% endfor %}
+          <label>Enter Product Link :</label><br>
+          {{ form.product_url }}<br><br>
+
+          <label>Enter Target Price :</label><br>
+          {{ form.target_price }}<br><br>
+
+          <label>Enter Your Email :</label><br>
+          {{ form.your_email }}<br>
+          <small class="form-text text-muted">
+            <i class="fa fa-lock" style="color:#007BFF;"></i>
+            We do not share your email with anyone else.
+          </small>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary"><br>
+      </form><hr>
+
+      <div class="text-left">
+        {% for m in messages %}
+          <h5>{{ m }}</h5>
+        {% endfor %}
+      </div>
 
     </div>
   </div>
