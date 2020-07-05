@@ -41,20 +41,44 @@ def save_to_fb(data_dict):
 
 
 def prod_valid(url):
-    HEADERS = {"User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"}
+    USER_AGENTS = [('Mozilla/5.0 (X11; Linux x86_64) '
+                     'AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/57.0.2987.110 '
+                     'Safari/537.36'),  # chrome
+                    ('Mozilla/5.0 (X11; Linux x86_64) '
+                     'AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/61.0.3163.79 '
+                     'Safari/537.36'),  # chrome
+                    ('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) '
+                     'Gecko/20100101 '
+                     'Firefox/55.0'),  # firefox
+                    ('Mozilla/5.0 (X11; Linux x86_64) '
+                     'AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/61.0.3163.91 '
+                     'Safari/537.36'),  # chrome
+                    ('Mozilla/5.0 (X11; Linux x86_64) '
+                     'AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/62.0.3202.89 '
+                     'Safari/537.36'),  # chrome
+                    ('Mozilla/5.0 (X11; Linux x86_64) '
+                     'AppleWebKit/537.36 (KHTML, like Gecko) '
+                     'Chrome/63.0.3239.108 '
+                     'Safari/537.36'),
+                    ('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'), ]
 
-    data = requests.get(url, headers=HEADERS).text
-    soup = BeautifulSoup(data, "html.parser")
+    for u in USER_AGENTS:
+        HEADERS = {"User-Agent" : u}
 
-    title_item = soup.find(id="productTitle")
-    title = ""
+        soup = BeautifulSoup(data, "html.parser")
 
-    if title_item:
-     title = title_item.get_text().strip()
+        title_item = soup.find(id="productTitle")
+        title = ""
 
-    print(title)
-    return len(title) > 0
+        if title_item:
+            title = title_item.get_text().strip()
+            return len(title) > 0
 
+    return 0
 
 
 ###############################################
