@@ -1,1 +1,1 @@
-web: gunicorn basic_app.wsgi
+web: gunicorn Price_Tracker.wsgi
