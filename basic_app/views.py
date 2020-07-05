@@ -68,7 +68,7 @@ def prod_valid(url):
 
     for u in USER_AGENTS:
         HEADERS = {"User-Agent" : u}
-
+        data = requests.get(url, headers=HEADERS).text
         soup = BeautifulSoup(data, "html.parser")
 
         title_item = soup.find(id="productTitle")
