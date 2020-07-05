@@ -17,15 +17,15 @@
     <h2><u>  Product Tracker WebApp</u></h2>
 
     <div class="jumbotron mx-auto text-center">
-      <form method="post" class="text-justify">
+      <form method="post" class="text-justify" autocomplete="off">
         <h4>Enter product details :</h4><hr>
 
-        <div class="form-group">
+        <div class="form-group" autocomplete="off">
           {% csrf_token %}
           <label>Enter Product Name :</label><br>
           {{ form.product_name }}<br><br>
 
-          <label>Enter Product Link :</label><br>
+          <label>Product's Amazon Link :</label><br>
           {{ form.product_url }}<br><br>
 
           <label>Enter Target Price :</label><br>
@@ -43,7 +43,7 @@
 
       <div class="text-left">
         {% for m in messages %}
-          <h5>{{ m }}</h5>
+          <h4>{{ m }}</h4>
         {% endfor %}
       </div>
 
