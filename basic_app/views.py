@@ -6,13 +6,13 @@ from firebase import firebase
 import requests
 from bs4 import BeautifulSoup
 
+
 # Create your views here.
 def saved(request):
     return render(request, "basic_app/saved.html", {})
 
 
 def index(request):
-
     if request.POST:
         form = ProductForm(request.POST)
         if form.is_valid() and prod_valid(request.POST["product_url"]):
