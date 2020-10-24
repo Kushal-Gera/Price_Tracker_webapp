@@ -11,7 +11,6 @@ from bs4 import BeautifulSoup
 def saved(request):
     return render(request, "basic_app/saved.html", {})
 
-
 def index(request):
     if request.POST:
         form = ProductForm(request.POST)
@@ -39,9 +38,9 @@ def save_to_fb(data_dict):
     fb.post("/Products/", data)
     print("saved data !!")
 
-
 def prod_valid(url):
-    USER_AGENTS = [('Mozilla/5.0 (X11; Linux x86_64) '
+    USER_AGENTS = [
+    ('Mozilla/5.0 (X11; Linux x86_64) '
                      'AppleWebKit/537.36 (KHTML, like Gecko) '
                      'Chrome/57.0.2987.110 '
                      'Safari/537.36'),  # chrome
